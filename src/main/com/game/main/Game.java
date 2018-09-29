@@ -75,7 +75,7 @@ public class Game {
 		}
 
 		List<String> log = new ArrayList<String>();
-		log.add(String.format("Player %s, %d turns remaining.", turnPlayer.getName(), turnPlayer.getTurns()));
+		log.add(String.format("Player %s, %d turns remaining.", turnPlayer.getName(), turnPlayer.getTurns()-1));
 		Prices prices = getPrices();
 
 		turnPlayer.doBuy(turn, prices, log);

@@ -210,6 +210,22 @@ public class TestGameApp {
 			System.out.println(results.toString());
 		}
 		
+		Turn philsTurn = new Turn(gameInfo.getName());
+		
+		philsTurn.setLemonToBuy(7);
+		philsTurn.setIceToBuy(8);
+		philsTurn.setWaterToBuy(9);
+		philsTurn.setSugarToBuy(10);
+		philsTurn.setCupsToBuy(7);
+		philsTurn.setEffectName("sampleEffect");
+		philsTurn.setAgainstName("fred");
+		philsTurn.setUserToken(phil.getToken());
+		
+		TurnResults results = myApp.doTurn(philsTurn);
+		
+		log(results.getLog());
+		System.out.println(results.toString());
+		
 		
 	}
 

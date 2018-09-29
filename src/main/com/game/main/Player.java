@@ -1,5 +1,6 @@
 package com.game.main;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -184,16 +185,19 @@ public class Player {
 	}
 
 	// Up to one from each player, per turn.
-	public void processEffects(List<String> playerNames, List<String> log) {
+	public void processEffects(List<String> playersWithUnusedEffect, List<String> log) {
 
-		for (Effect e : effectQueue) {
+		
+		Iterator<Effect> i = effectQueue.iterator();
+		while (i.hasNext()) {
 			
-			if (playerNames.contains(e.getOwnerName()))
+			Effect e = i.next();
+			if (playersWithUnusedEffect.contains(e.getOwnerName()))
 			{
 				e.doEffect(this,log);
-				effectQueue.remove(e);
-				playerNames.remove(e.getOwnerName());
-				if (playerNames.size()==0)
+				i.remove();
+				playersWithUnusedEffect.remove(e.getOwnerName());
+				if (playersWithUnusedEffect.size()==0)
 					break;
 			}
 		}
