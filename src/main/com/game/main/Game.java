@@ -82,8 +82,9 @@ public class Game {
 
 		if (turn.hasEffect()) {
 
-			Effect effect = new SampleEffect(turnPlayer.getName());
-
+			Effect effect = Effect.getNewEffect(turn.getEffectName());
+			effect.setOwnerName(turnPlayer.getName());
+			
 			Player againstPlayer = getPlayer(turn.getAgainstName());
 			againstPlayer.addEffect(effect);
 		}

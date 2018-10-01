@@ -149,11 +149,14 @@ public class Player {
 		int cost = price;
 		setMoney(money - cost);
 		
-		readyEffect(new SampleEffect(againstName));
+		Effect anEffect = Effect.getNewEffect(effectName);
+		anEffect.setOwnerName(this.getName());
+		
+		readyEffect(anEffect);
 		
 	}
 
-	private void readyEffect(SampleEffect effect) {
+	private void readyEffect(Effect effect) {
 		this.effect=effect;
 		
 	}

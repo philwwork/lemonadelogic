@@ -25,7 +25,7 @@ public class TestGameApp {
 	public void testCreateLogin() {
 		String email = "phil@gmail.com";
 		String password = "fakepass";
-		String username = "phil";
+		String username = "Phil";
 
 		GameApp myApp = new GameApp();
 
@@ -35,7 +35,7 @@ public class TestGameApp {
 		assertTrue(result.getToken() != null);
 
 		
-		myApp.createLogin("fred" , "fred@gmail.com",  "fredpassword");
+		myApp.createLogin("Fred" , "fred@gmail.com",  "fredpassword");
 		myApp.createLogin("abe",  "abe@gmail.com", "abepassword");
 		
 		UserInfo otherResult = myApp.createLogin("john", "john@gmail.com", "johnpassword");
@@ -52,12 +52,12 @@ public class TestGameApp {
 		
 		String email = "phil@gmail.com";
 		String password = "fakepass";
-		String username = "phil";
+		String username = "Phil";
 
 		GameApp myApp = new GameApp();
 
 		myApp.createLogin(username, email, password);
-		myApp.createLogin("fred" , "fred@gmail.com",  "fredpassword");
+		myApp.createLogin("Fred" , "fred@gmail.com",  "fredpassword");
 		myApp.createLogin("abe",  "abe@gmail.com", "abepassword");
 		myApp.createLogin("john", "john@gmail.com", "johnpassword");
 		return myApp;
@@ -73,7 +73,7 @@ public class TestGameApp {
 
 		assertNull(myLogin.getMessage());
 		assertTrue(myLogin.getEmail().equals("phil@gmail.com"));
-		assertTrue(myLogin.getName().equals("phil"));
+		assertTrue(myLogin.getName().equals("Phil"));
 		assertNotNull(myLogin.getToken());
 		
 		
@@ -181,8 +181,8 @@ public class TestGameApp {
 			philsTurn.setWaterToBuy(9);
 			philsTurn.setSugarToBuy(10);
 			philsTurn.setCupsToBuy(7);
-			philsTurn.setEffectName("sampleEffect");
-			philsTurn.setAgainstName("fred");
+			philsTurn.setEffectName("cupless");
+			philsTurn.setAgainstName("Fred");
 			philsTurn.setUserToken(phil.getToken());
 			
 			TurnResults results = myApp.doTurn(philsTurn);
@@ -200,8 +200,8 @@ public class TestGameApp {
 			fredsTurn.setWaterToBuy(3);
 			fredsTurn.setSugarToBuy(4);
 			fredsTurn.setCupsToBuy(5);
-			fredsTurn.setEffectName("sampleEffect");
-			fredsTurn.setAgainstName("phil");
+			fredsTurn.setEffectName("sugarless");
+			fredsTurn.setAgainstName("Phil");
 			fredsTurn.setUserToken(fred.getToken());
 			
 			TurnResults results = myApp.doTurn(fredsTurn);
@@ -210,21 +210,24 @@ public class TestGameApp {
 			System.out.println(results.toString());
 		}
 		
-		Turn philsTurn = new Turn(gameInfo.getName());
-		
-		philsTurn.setLemonToBuy(7);
-		philsTurn.setIceToBuy(8);
-		philsTurn.setWaterToBuy(9);
-		philsTurn.setSugarToBuy(10);
-		philsTurn.setCupsToBuy(7);
-		philsTurn.setEffectName("sampleEffect");
-		philsTurn.setAgainstName("fred");
-		philsTurn.setUserToken(phil.getToken());
-		
-		TurnResults results = myApp.doTurn(philsTurn);
-		
-		log(results.getLog());
-		System.out.println(results.toString());
+		for (int i=0; i <5; i++)
+		{
+			Turn philsTurn = new Turn(gameInfo.getName());
+			
+			philsTurn.setLemonToBuy(7);
+			philsTurn.setIceToBuy(8);
+			philsTurn.setWaterToBuy(9);
+			philsTurn.setSugarToBuy(10);
+			philsTurn.setCupsToBuy(7);
+			philsTurn.setEffectName("sugarless");
+			philsTurn.setAgainstName("Fred");
+			philsTurn.setUserToken(phil.getToken());
+			
+			TurnResults results = myApp.doTurn(philsTurn);
+			
+			log(results.getLog());
+			System.out.println(results.toString());
+		}
 		
 		
 	}
