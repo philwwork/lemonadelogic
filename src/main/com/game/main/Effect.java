@@ -22,6 +22,8 @@ public abstract class Effect
 	
 	public static Effect getNewEffect(String name)
 	{
+		if (!effectClasses.keySet().contains(name))
+			throw new IllegalArgumentException();
 		
 		Class<? extends Effect> someEffectClass = effectClasses.get(name);
 
@@ -31,7 +33,10 @@ public abstract class Effect
 			anEffect = (Effect)someEffectClass.newInstance();
 		} catch (InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
+			
+			
 		}
+		
 
 		return anEffect;
 	}

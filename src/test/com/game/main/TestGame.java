@@ -299,7 +299,8 @@ public class TestGame {
 		myTurn.setWaterToBuy(0);
 		myTurn.setSugarToBuy(0);
 		myTurn.setCupsToBuy(0);
-		
+		myTurn.setEffectName("cupless");
+		myTurn.setAgainstName("Abe");
 		exception.expect(IllegalStateException.class);
 		
 		int i;
